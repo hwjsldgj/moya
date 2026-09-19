@@ -31,50 +31,50 @@ namespace MoeNegiMod.Moya.Cards;
 public class Railcannon() : MoyaCard(cost: 2,
 #pragma warning restore STS001 // Symbol missing localization
 
-	CardType.Attack, CardRarity.Rare,
-	TargetType.AllEnemies)
+    CardType.Attack, CardRarity.Rare,
+    TargetType.AllEnemies)
 {
-	protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8, ValueProp.Move)];
 
-	protected override IEnumerable<IHoverTip> ExtraHoverTips => [
-		HoverTipFactory.FromPower<CoinsPower>()
-	];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+        HoverTipFactory.FromPower<CoinsPower>()
+    ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-	{
-		Creature user = base.Owner.Creature;
-		int a = user.GetPowerAmount<CoinsPower>();
+    {
+        Creature user = base.Owner.Creature;
+        int a = user.GetPowerAmount<CoinsPower>();
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
-			.WithAttackerAnim("Cast", 0.5f)
-			.BeforeDamage(async delegate
-			{
-				List<Creature> enemies = base.CombatState.Enemies.Where((Creature e) => e.IsAlive).ToList();
-				NHyperbeamVfx nHyperbeamVfx = NHyperbeamVfx.Create(base.Owner.Creature, enemies.Last());
-				if (nHyperbeamVfx != null)
-				{
-					NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(nHyperbeamVfx);
-					await Cmd.Wait(0.5f);
-				}
+            .WithAttackerAnim("Cast", 0.5f)
+            .BeforeDamage(async delegate
+            {
+                List<Creature> enemies = base.CombatState.Enemies.Where((Creature e) => e.IsAlive).ToList();
+                NHyperbeamVfx nHyperbeamVfx = NHyperbeamVfx.Create(base.Owner.Creature, enemies.Last());
+                if (nHyperbeamVfx != null)
+                {
+                    NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(nHyperbeamVfx);
+                    await Cmd.Wait(0.5f);
+                }
 
-				foreach (Creature item in enemies)
-				{
-					NHyperbeamImpactVfx nHyperbeamImpactVfx = NHyperbeamImpactVfx.Create(base.Owner.Creature, item);
-					if (nHyperbeamImpactVfx != null)
-					{
-						NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(nHyperbeamImpactVfx);
-					}
-				}
-			})
-			.Execute(choiceContext);
-		for (int i = 1; i < a; i++)
-		{
+                foreach (Creature item in enemies)
+                {
+                    NHyperbeamImpactVfx nHyperbeamImpactVfx = NHyperbeamImpactVfx.Create(base.Owner.Creature, item);
+                    if (nHyperbeamImpactVfx != null)
+                    {
+                        NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(nHyperbeamImpactVfx);
+                    }
+                }
+            })
+            .Execute(choiceContext);
+        for (int i = 1; i < a; i++)
+        {
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
         }
-		
-	}
-	
-	protected override void OnUpgrade()
-	{
-		CardCmd.ApplyKeyword(this, CardKeyword.Retain);
-	}
+        
+    }
+    
+    protected override void OnUpgrade()
+    {
+        CardCmd.ApplyKeyword(this, CardKeyword.Retain);
+    }
 }

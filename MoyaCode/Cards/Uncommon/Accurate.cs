@@ -26,38 +26,38 @@ namespace MoeNegiMod.Moya.Cards;
 public class Accurate() : MoyaCard(cost: 1,
 #pragma warning restore STS001 // Symbol missing localization
 
-	CardType.Skill, CardRarity.Uncommon,
-	TargetType.Self)
+    CardType.Skill, CardRarity.Uncommon,
+    TargetType.Self)
 {
 
-	public override IEnumerable<CardKeyword> CanonicalKeywords =>
-	[
-		CardKeyword.Retain,
-	];
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Retain,
+    ];
 
-	protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("SetupStrikePower", 0)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("SetupStrikePower", 0)];
 
-	protected override IEnumerable<IHoverTip> ExtraHoverTips => [
-		HoverTipFactory.FromPower<StrengthPower>()
-	];
-	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+        HoverTipFactory.FromPower<StrengthPower>()
+    ];
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 
-	{
-		Creature user = base.Owner.Creature;
-		int currentVigor = user.GetPowerAmount<CoinsPower>();
-		int loseAmount = currentVigor - 1;
-		if (loseAmount > 0)
-		{
-			
-			await CreatureCmd.TriggerAnim(user, "Cast", base.Owner.Character.CastAnimDelay);
-			await PowerCmd.Apply<CoinsPower>(choiceContext,user, -loseAmount, user, this);
-			await PowerCmd.Apply<StrengthPower>(choiceContext,user, loseAmount, user, this); 
-		}
-		
-		await Task.CompletedTask;
-	}
-	protected override void OnUpgrade()
-	{
-		EnergyCost.UpgradeBy(-1);
-	}
+    {
+        Creature user = base.Owner.Creature;
+        int currentVigor = user.GetPowerAmount<CoinsPower>();
+        int loseAmount = currentVigor - 1;
+        if (loseAmount > 0)
+        {
+            
+            await CreatureCmd.TriggerAnim(user, "Cast", base.Owner.Character.CastAnimDelay);
+            await PowerCmd.Apply<CoinsPower>(choiceContext,user, -loseAmount, user, this);
+            await PowerCmd.Apply<StrengthPower>(choiceContext,user, loseAmount, user, this); 
+        }
+        
+        await Task.CompletedTask;
+    }
+    protected override void OnUpgrade()
+    {
+        EnergyCost.UpgradeBy(-1);
+    }
 }

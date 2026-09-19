@@ -18,18 +18,18 @@ namespace MoeNegiMod.Moya.Cards;
 #pragma warning disable STS001 // Symbol missing localization
 public class TwoSide() : MoyaCard(cost: 1,
 #pragma warning restore STS001 // Symbol missing localization
-	CardType.Power, CardRarity.Rare,
-	TargetType.Self)
+    CardType.Power, CardRarity.Rare,
+    TargetType.Self)
 {
-	protected override IEnumerable<DynamicVar> CanonicalVars => [ new DynamicVar("Power", 3m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [ new DynamicVar("Power", 3m)];
 
-	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-	{
-		await PowerCmd.Apply<TwoSidePower>(choiceContext, base.Owner.Creature, base.DynamicVars["Power"].BaseValue, base.Owner.Creature, this);
-	}
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        await PowerCmd.Apply<TwoSidePower>(choiceContext, base.Owner.Creature, base.DynamicVars["Power"].BaseValue, base.Owner.Creature, this);
+    }
 
-	protected override void OnUpgrade()
-	{
-		DynamicVars["Power"].UpgradeValueBy(1);
-	}
+    protected override void OnUpgrade()
+    {
+        DynamicVars["Power"].UpgradeValueBy(1);
+    }
 }

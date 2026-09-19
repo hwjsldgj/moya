@@ -25,14 +25,14 @@ namespace MoeNegiMod.Moya.Cards;
 public class MoyaBullet() : MoyaCard(cost: 1,
 #pragma warning restore STS001 // Symbol missing localization
 
-	CardType.Skill, CardRarity.Basic,
-	TargetType.Self)
+    CardType.Skill, CardRarity.Basic,
+    TargetType.Self)
 {
-	protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(4, ValueProp.Move),new DynamicVar("BuletPower",2m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(4, ValueProp.Move),new DynamicVar("BuletPower",2m)];
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [
-		HoverTipFactory.FromPower<Bulet>()
-	];
+        HoverTipFactory.FromPower<Bulet>()
+    ];
     public override async Task<Task> AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
         if (card != this)
@@ -44,7 +44,7 @@ public class MoyaBullet() : MoyaCard(cost: 1,
         return Task.CompletedTask;
     }
     protected override void OnUpgrade()
-	{
+    {
         DynamicVars["BuletPower"].UpgradeValueBy(1);
     }
 }

@@ -8,7 +8,7 @@ namespace MoeNegiMod.Moya.Character;
 
 public partial class MoyaRelicPool : CustomRelicPoolModel
 {
-	public override string EnergyColorName => Moya.CharacterId;
+    public override string EnergyColorName => Moya.CharacterId;
 
-	public override Color LabOutlineColor => Moya.Color;
+    public override Color LabOutlineColor => Moya.Color;
 }

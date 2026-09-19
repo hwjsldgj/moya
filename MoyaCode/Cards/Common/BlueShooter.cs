@@ -23,35 +23,35 @@ namespace MoeNegiMod.Moya.Cards;
 public class BlueShooter() : MoyaCard(cost: 1,
 #pragma warning restore STS001 // Symbol missing localization
 
-	CardType.Attack, CardRarity.Common,
-	TargetType.AnyEnemy)
+    CardType.Attack, CardRarity.Common,
+    TargetType.AnyEnemy)
 {
-	protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5, ValueProp.Move), new PowerVar<VulnerablePower>("VulnerablePower",2m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5, ValueProp.Move), new PowerVar<VulnerablePower>("VulnerablePower",2m)];
 
-	protected override IEnumerable<IHoverTip> ExtraHoverTips => [
-		HoverTipFactory.FromPower<VulnerablePower>()
-	];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+        HoverTipFactory.FromPower<VulnerablePower>()
+    ];
 
-	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-	{
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
 
-		
-		var owner = this.Owner;
-		if (owner == null) return;
+        
+        var owner = this.Owner;
+        if (owner == null) return;
 
-		var enemies = CombatState.HittableEnemies;
-		if (enemies.Count <= 0) return;
-		var random = new Random();
-		Creature randomTarget = enemies[random.Next(enemies.Count)];
+        var enemies = CombatState.HittableEnemies;
+        if (enemies.Count <= 0) return;
+        var random = new Random();
+        Creature randomTarget = enemies[random.Next(enemies.Count)];
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(randomTarget).Execute(choiceContext);
         await PowerCmd.Apply<VulnerablePower>(choiceContext,randomTarget, base.DynamicVars["VulnerablePower"].BaseValue, base.Owner.Creature, this);
 
-	}
-	
-	protected override void OnUpgrade()
-	{
-		DynamicVars.Damage.UpgradeValueBy(2m);
-		base.DynamicVars.Vulnerable.UpgradeValueBy(1m);
-	}
+    }
+    
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Damage.UpgradeValueBy(2m);
+        base.DynamicVars.Vulnerable.UpgradeValueBy(1m);
+    }
 }

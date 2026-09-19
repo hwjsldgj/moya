@@ -26,26 +26,26 @@ namespace MoeNegiMod.Moya.Cards;
 public class BlueR() : MoyaCard(cost: 1,
 #pragma warning restore STS001 // Symbol missing localization
 
-	CardType.Attack, CardRarity.Common,
-	TargetType.AnyEnemy)
+    CardType.Attack, CardRarity.Common,
+    TargetType.AnyEnemy)
 {
-	public override IEnumerable<CardKeyword> CanonicalKeywords => 
-	[
-		CardKeyword.Retain
-	];
-	protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(3, ValueProp.Move)];
-	
-	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    public override IEnumerable<CardKeyword> CanonicalKeywords => 
+    [
+        CardKeyword.Retain
+    ];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(3, ValueProp.Move)];
+    
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 
-	{
+    {
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
     }
 
-	
-	protected override void OnUpgrade()
-	{
-		DynamicVars.Damage.UpgradeValueBy(1m);
-	}
+    
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Damage.UpgradeValueBy(1m);
+    }
 }

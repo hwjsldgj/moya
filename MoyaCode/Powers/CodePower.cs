@@ -30,56 +30,56 @@ public sealed class CodePower() : MoyaPowers
 #pragma warning restore STS001 // Symbol missing localization
 {
 
-	private class Data
-	{
-			public readonly Dictionary<CardModel, int> amountsForPlayedCards = new Dictionary<CardModel, int>();
-	}
-	public override PowerType Type => PowerType.Buff;
+    private class Data
+    {
+            public readonly Dictionary<CardModel, int> amountsForPlayedCards = new Dictionary<CardModel, int>();
+    }
+    public override PowerType Type => PowerType.Buff;
 
-	public override PowerStackType StackType => PowerStackType.Counter;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
-	public override bool AllowNegative => true;
+    public override bool AllowNegative => true;
 
-	protected override object InitInternalData()
-	{
-		return new Data();
-	}
+    protected override object InitInternalData()
+    {
+        return new Data();
+    }
 
-	public override Task BeforeCardPlayed(CardPlay cardPlay)
-	{
-		if (cardPlay.Card.Owner.Creature != base.Owner)
-		{
-			return Task.CompletedTask;
-		}
+    public override Task BeforeCardPlayed(CardPlay cardPlay)
+    {
+        if (cardPlay.Card.Owner.Creature != base.Owner)
+        {
+            return Task.CompletedTask;
+        }
 
-		if (cardPlay.Card.Type != CardType.Attack)
-		{
-			return Task.CompletedTask;
-		}
+        if (cardPlay.Card.Type != CardType.Attack)
+        {
+            return Task.CompletedTask;
+        }
 
-		GetInternalData<Data>().amountsForPlayedCards.Add(cardPlay.Card, base.Amount);
-		return Task.CompletedTask;
-	}
-	public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-	{
-		if (!GetInternalData<Data>().amountsForPlayedCards.Remove(cardPlay.Card, out var _))
-		{
-			return;
-		}
-		
-		
-			await Cmd.CustomScaledWait(0.2f, 0.4f);
-			foreach (Creature hittableEnemy in base.CombatState.HittableEnemies)
-			{
-				NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NFireSmokePuffVfx.Create(hittableEnemy));
-			}
-			int a = base.Amount;
-			await Cmd.CustomScaledWait(0.2f, 0.4f);
-			await CreatureCmd.Damage(choiceContext, base.CombatState.HittableEnemies, base.Amount * a, ValueProp.Unpowered, null);
-			await PowerCmd.Remove(this);
-		
-		
-		
-	}
-	
+        GetInternalData<Data>().amountsForPlayedCards.Add(cardPlay.Card, base.Amount);
+        return Task.CompletedTask;
+    }
+    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (!GetInternalData<Data>().amountsForPlayedCards.Remove(cardPlay.Card, out var _))
+        {
+            return;
+        }
+        
+        
+            await Cmd.CustomScaledWait(0.2f, 0.4f);
+            foreach (Creature hittableEnemy in base.CombatState.HittableEnemies)
+            {
+                NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NFireSmokePuffVfx.Create(hittableEnemy));
+            }
+            int a = base.Amount;
+            await Cmd.CustomScaledWait(0.2f, 0.4f);
+            await CreatureCmd.Damage(choiceContext, base.CombatState.HittableEnemies, base.Amount * a, ValueProp.Unpowered, null);
+            await PowerCmd.Remove(this);
+        
+        
+        
+    }
+    
 }

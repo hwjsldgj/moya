@@ -29,27 +29,27 @@ namespace MoeNegiMod.Moya.Cards;
 public class Code() : MoyaCard(cost: 2,
 #pragma warning restore STS001 // Symbol missing localization
 
-	CardType.Skill, CardRarity.Uncommon,
-	TargetType.Self)
+    CardType.Skill, CardRarity.Uncommon,
+    TargetType.Self)
 {
-	protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(12, ValueProp.Move), new DynamicVar("CodePower", 3m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(12, ValueProp.Move), new DynamicVar("CodePower", 3m)];
 
-	
-	protected override IEnumerable<IHoverTip> ExtraHoverTips => [
-		HoverTipFactory.FromPower<CodePower>()
-	];
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+        HoverTipFactory.FromPower<CodePower>()
+    ];
 
-	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-	{
-		await CommonActions.CardBlock(this, cardPlay);
-		await PowerCmd.Apply<CodePower>(choiceContext,base.Owner.Creature, base.DynamicVars["CodePower"].BaseValue, base.Owner.Creature, this);
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        await CommonActions.CardBlock(this, cardPlay);
+        await PowerCmd.Apply<CodePower>(choiceContext,base.Owner.Creature, base.DynamicVars["CodePower"].BaseValue, base.Owner.Creature, this);
 
-	}
+    }
 
-	protected override void OnUpgrade()
-	{
-		base.DynamicVars["CodePower"].UpgradeValueBy(1m);
-		DynamicVars.Block.UpgradeValueBy(4m);
-	}
-	
+    protected override void OnUpgrade()
+    {
+        base.DynamicVars["CodePower"].UpgradeValueBy(1m);
+        DynamicVars.Block.UpgradeValueBy(4m);
+    }
+    
 }

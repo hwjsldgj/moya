@@ -31,30 +31,30 @@ namespace MoeNegiMod.Moya.Cards;
 public class StickS() : MoyaCard(cost: 1,
 #pragma warning restore STS001 // Symbol missing localization
 
-	CardType.Attack, CardRarity.Common,
-	TargetType.AnyEnemy)
+    CardType.Attack, CardRarity.Common,
+    TargetType.AnyEnemy)
 {
-	protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(9, ValueProp.Move), new CardsVar("Cards",1)];
-	protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
-	
-	public override IEnumerable<CardKeyword> CanonicalKeywords =>
-	[
-		CardKeyword.Exhaust,
-	];
-	protected override IEnumerable<IHoverTip> ExtraHoverTips => [
-		
-	];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(9, ValueProp.Move), new CardsVar("Cards",1)];
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust,
+    ];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+        
+    ];
    
-	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-	{
-		ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
         CardModel card = CreateClone();
-		await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand,base.Owner);
-		await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
-	}
-	protected override void OnUpgrade()
-	{
-		base.DynamicVars.Damage.UpgradeValueBy(1);
-	}
+        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand,base.Owner);
+        await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
+    }
+    protected override void OnUpgrade()
+    {
+        base.DynamicVars.Damage.UpgradeValueBy(1);
+    }
 }
