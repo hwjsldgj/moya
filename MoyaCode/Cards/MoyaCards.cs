@@ -44,7 +44,7 @@ public abstract class MoyaCard(int cost, CardType type, CardRarity rarity, Targe
 		{
 			var degenerateType = PreviewDegenerate ? "_degenerate" : "";
 			var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant() + degenerateType}.png".CardImagePath();
-			Log.Info(">>>[MoeNegiMod]CardPath=" + path, 2);
+			Log.Info(">>>[Moya]CardPath=" + path, 2);
 			return ResourceLoader.Exists(path) ? path : $"card{degenerateType}.png".CardImagePath();
 		}
 	}

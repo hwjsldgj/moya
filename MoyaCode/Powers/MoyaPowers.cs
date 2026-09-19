@@ -22,7 +22,7 @@ public abstract class MoyaPowers : CustomPowerModel
         {
             var degenerateType = PreviewDegenerate ? "_degenerate" : "";
             var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant() + degenerateType}.png".PowerImagePath();
-            Log.Info(">>>[MoeNegiMod]CardPath=" + path, 2);
+            Log.Info(">>>[Moya]CardPath=" + path, 2);
             return ResourceLoader.Exists(path) ? path : $"card{degenerateType}.png".PowerImagePath();
         }
     }
@@ -33,7 +33,7 @@ public abstract class MoyaPowers : CustomPowerModel
         {
            var degenerateType = PreviewDegenerate ? "_degenerate" : "";
             var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant() + degenerateType}.png".BigPowerImagePath();
-            Log.Info(">>>[MoeNegiMod]CardPath=" + path, 2);
+            Log.Info(">>>[Moya]CardPath=" + path, 2);
             return ResourceLoader.Exists(path) ? path : $"card{degenerateType}.png".BigPowerImagePath();
         }
     }

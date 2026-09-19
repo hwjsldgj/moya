@@ -40,7 +40,6 @@ public class Railcannon() : MoyaCard(cost: 2,
 		HoverTipFactory.FromPower<CoinsPower>()
 	];
 
-    [System.Obsolete]
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		Creature user = base.Owner.Creature;

@@ -13,7 +13,6 @@ using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.ValueProps;
-using MoeNegiMod.Moya.Cards;
 using MoeNegiMod.Moya.Powers;
 using System;
 using System.Collections.Generic;
@@ -30,8 +29,6 @@ public class Lose() : MoyaCard(cost: 1,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
-    private readonly string _tempStrengthKey;
-
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [

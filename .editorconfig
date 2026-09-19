@@ -1,4 +1,45 @@
+# Moya Mod 统一代码规范
+# 适用于 C# 源码与 Godot 资源文本，保证多编辑器（VS / VS Code / Rider）下格式一致
 root = true
 
 [*]
 charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{cs,json,tscn,cfg,csproj,sln,md}]
+indent_style = space
+indent_size = 4
+
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# ---------- C# 代码风格 ----------
+[*.cs]
+
+# 命名空间与文件头
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = false
+file_header_template = unset
+
+# 命名规范
+dotnet_naming_rule.interface_should_begin_with_i.severity = suggestion
+dotnet_naming_rule.types_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.private_fields_should_be_camel_case.severity = suggestion
+dotnet_naming_rule.private_static_fields_should_begin_with_s.severity = suggestion
+
+# 风格规则
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_style_expression_bodied_methods = false:suggestion
+csharp_style_expression_bodied_properties = true:suggestion
+csharp_prefer_braces = true:suggestion
+csharp_style_namespace_declarations = file_scoped:suggestion
+csharp_style_prefer_primary_constructors = false:suggestion
+
+# IDE 提示（warning 级，提醒但不阻断构建）
+dotnet_diagnostic.IDE0005.severity = warning   # 未使用的 using
+dotnet_diagnostic.CS0414.severity = warning    # 已赋值但未使用的私有字段
+dotnet_diagnostic.CS0169.severity = warning    # 从未使用的私有字段
+dotnet_diagnostic.IDE0059.severity = warning   # 不必要的值赋值

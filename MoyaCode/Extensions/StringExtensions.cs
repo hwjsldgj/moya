@@ -1,5 +1,5 @@
 using System.IO;
-using MainFile = Moya.Moya.MainFile;
+using MainFile = MoeNegiMod.Moya.MainFile;
 
 namespace MoeNegiMod.Moya.Extensions;
 

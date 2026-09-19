@@ -17,7 +17,7 @@
   "MOENEGIMOD-WEAPON_POWER.description": "回合开始时，增加{Amount}张随机攻击牌至手牌，为增加的卡牌添加消耗",
   "MOENEGIMOD-WEAPON_POWER.smartDescription": "回合开始时，增加{Amount}张随机攻击牌至手牌",
   "MOENEGIMOD-WEAPON_POWER.title": "武器库",
-  "MOENEGIMOD-P_BULET.description": "e",
-  "MOENEGIMOD-P_BULET.smartDescription": "e",
+  "MOENEGIMOD-P_BULET.description": "[gold]子弹[/gold]不再施加中毒，[gold]攻击后[/gold]改为消耗1层",
+  "MOENEGIMOD-P_BULET.smartDescription": "子弹改为攻击后消耗，不再施加中毒",
   "MOENEGIMOD-P_BULET.title": "毒弹"
 }

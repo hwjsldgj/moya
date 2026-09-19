@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 using BaseLib.Abstracts;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
@@ -5,10 +8,9 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.PotionPools;
 using MegaCrit.Sts2.Core.Models.RelicPools;
-using MoeNegiMod.Moya.Extensions;
 using MoeNegiMod.Moya.Cards;
-using System;
-using System.Collections.Generic;
+using MoeNegiMod.Moya.Core;
+using MoeNegiMod.Moya.Extensions;
 using MoeNegiMod.Moya.Relics;
 
 namespace MoeNegiMod.Moya.Character;
@@ -23,11 +25,11 @@ public class Moya : PlaceholderCharacterModel
 
 	public override string PlaceholderID => "necrobinder";
 
-	public static readonly Color Color = new Color("1d6925ff");
+	public static readonly Color Color = new Color(ModConfig.CharacterColorHex);
 
 	public override Color NameColor => Color;
 	public override CharacterGender Gender => CharacterGender.Feminine;
-	public override int StartingHp => 75;
+	public override int StartingHp => ModConfig.StartingHp;
 
 	public override IEnumerable<CardModel> StartingDeck => [
 		ModelDb.Card<MoyaAttack>(),

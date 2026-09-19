@@ -1,13 +1,9 @@
-using BaseLib.Utils;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Modding;
-using MegaCrit.Sts2.Core.Nodes.Screens.Timeline;
-using MegaCrit.Sts2.Core.Saves;
-using MegaCrit.Sts2.Core.Saves.Managers;
-using MegaCrit.Sts2.Core.Timeline;
+using MoeNegiMod.Moya.Core;
 
-namespace Moya.Moya;
+namespace MoeNegiMod.Moya;
 
 /**
  * Ideas
@@ -24,7 +20,7 @@ namespace Moya.Moya;
 [ModInitializer(nameof(Initialize))]
 public class MainFile
 {
-	public const string ModId = "Moya"; //At the moment, this is used only for the Logger and harmony names.
+	public const string ModId = MoyaMod.Id; //At the moment, this is used only for the Logger and harmony names.
 
 	public static Logger Logger { get; } =
 		new(ModId, LogType.Generic);

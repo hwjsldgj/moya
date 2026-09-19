@@ -5,10 +5,6 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Moya\新文件夹\**" />
-    <EmbeddedResource Remove="Moya\新文件夹\**" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Moya\Images\Cards\moya_block.png" />
     <Content Include="Moya\Images\Charui\big_energy.png" />
     <Content Include="Moya\Images\Charui\character_icon_char_name.png" />
@@ -18,9 +14,9 @@
     <Content Include="Moya\Images\Charui\text_energy.png" />
     <Content Include="Moya\localization\zhs\cards.json" />
     <Content Include="Moya\localization\zhs\characters.json" />
-    <Content Include="moya\localization\zhs\monsters.json" />
+    <Content Include="Moya\localization\zhs\monsters.json" />
     <Content Include="Moya\localization\zhs\powers.json" />
-    <Content Include="moya\localization\zhs\relics.json" />
+    <Content Include="Moya\localization\zhs\relics.json" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
@@ -35,9 +31,6 @@
     <Reference Include="sts2">
       <HintPath>D:\SteamLibrary\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64\sts2.dll</HintPath>
     </Reference>
-    <Reference Include="Watcher">
-      <HintPath>..\..\SteamLibrary\steamapps\common\Slay the Spire 2\mods\观者（BravoBon）\Watcher.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Moya\Images\Cards\card.png.import" />
@@ -50,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
-    <PackageReference Include="AWSSDK.S3" Version="4.0.23" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Moya\Images\Powers\Big\" />
