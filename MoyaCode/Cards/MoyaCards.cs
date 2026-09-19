@@ -49,4 +49,4 @@ public abstract class MoyaCard(int cost, CardType type, CardRarity rarity, Targe
         }
     }
 }
- 
+

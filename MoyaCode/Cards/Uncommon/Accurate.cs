@@ -48,12 +48,12 @@ public class Accurate() : MoyaCard(cost: 1,
         int loseAmount = currentVigor - 1;
         if (loseAmount > 0)
         {
-            
+
             await CreatureCmd.TriggerAnim(user, "Cast", base.Owner.Character.CastAnimDelay);
             await PowerCmd.Apply<CoinsPower>(choiceContext,user, -loseAmount, user, this);
-            await PowerCmd.Apply<StrengthPower>(choiceContext,user, loseAmount, user, this); 
+            await PowerCmd.Apply<StrengthPower>(choiceContext,user, loseAmount, user, this);
         }
-        
+
         await Task.CompletedTask;
     }
     protected override void OnUpgrade()

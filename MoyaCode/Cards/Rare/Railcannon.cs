@@ -70,9 +70,9 @@ public class Railcannon() : MoyaCard(cost: 2,
         {
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
         }
-        
+
     }
-    
+
     protected override void OnUpgrade()
     {
         CardCmd.ApplyKeyword(this, CardKeyword.Retain);

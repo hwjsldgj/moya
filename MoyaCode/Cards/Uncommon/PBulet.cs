@@ -28,7 +28,7 @@ public class PBulet() : MoyaCard(cost: 1,
     {
         await PowerCmd.Apply<PBuletPower>(choiceContext, base.Owner.Creature, base.DynamicVars["Power"].BaseValue, base.Owner.Creature, this);
     }
-    
+
     protected override void OnUpgrade()
     {
         DynamicVars["Power"].UpgradeValueBy(1);

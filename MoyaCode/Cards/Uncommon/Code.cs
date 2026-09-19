@@ -34,7 +34,7 @@ public class Code() : MoyaCard(cost: 2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(12, ValueProp.Move), new DynamicVar("CodePower", 3m)];
 
-    
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [
         HoverTipFactory.FromPower<CodePower>()
     ];
@@ -51,5 +51,5 @@ public class Code() : MoyaCard(cost: 2,
         base.DynamicVars["CodePower"].UpgradeValueBy(1m);
         DynamicVars.Block.UpgradeValueBy(4m);
     }
-    
+
 }

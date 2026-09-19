@@ -34,7 +34,7 @@ public class OverHeat() : MoyaCard(cost: 1,
         await PowerCmd.Apply<OverHeatPower>(choiceContext, cardPlay.Target, amount, base.Owner.Creature, this);
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
     }
-    
+
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(4m);

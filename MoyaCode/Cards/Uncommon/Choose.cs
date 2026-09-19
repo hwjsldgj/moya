@@ -57,7 +57,7 @@ public class Choose() : MoyaCard(cost: 1,
         CardModel cardModel = await CardSelectCmd.FromChooseACardScreen(choiceContext, cards, base.Owner, canSkip: false);
         if (cardModel != null)
         {
-            
+
             await CardCmd.AutoPlay(choiceContext,cardModel,target: null,type: AutoPlayType.Default);
 
         }

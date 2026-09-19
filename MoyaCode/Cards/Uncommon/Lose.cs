@@ -50,7 +50,7 @@ public class Lose() : MoyaCard(cost: 1,
 
 
         int loseAmount = currentVigor;
-        
+
         if (loseAmount > 0)
         {
 
