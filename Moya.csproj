@@ -33,7 +33,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Moya\Images\Cards\card.png.import" />
     <None Include="Moya\Images\Charui\big_energy.png.import" />
     <None Include="Moya\Images\Charui\character_icon_char_name.png.import" />
     <None Include="Moya\Images\Charui\char_select_char_name.png.import" />
