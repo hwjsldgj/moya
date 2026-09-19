@@ -24,7 +24,7 @@ public class Shift() : MoyaCard(cost: 1,
     TargetType.Self)
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<ThrowC>(base.IsUpgraded)];
-    
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         CardModel cardModel = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 1), context: choiceContext, player: base.Owner, filter: null, source: this)).FirstOrDefault();
@@ -39,10 +39,10 @@ public class Shift() : MoyaCard(cost: 1,
             await CardCmd.Transform(cardModel, cardModel2);
         }
     }
-    
+
 
     protected override void OnUpgrade()
     {
-        
+
     }
 }

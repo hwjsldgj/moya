@@ -36,15 +36,15 @@ public class StickS() : MoyaCard(cost: 1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(9, ValueProp.Move), new CardsVar("Cards",1)];
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
-    
+
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Exhaust,
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [
-        
+
     ];
-   
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");

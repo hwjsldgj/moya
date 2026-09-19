@@ -28,7 +28,7 @@ namespace MoeNegiMod.Moya.Cards;
 #pragma warning disable STS001 // Symbol missing localization
 public class ThrowC() : MoyaCard(cost: 0,
 #pragma warning restore STS001 // Symbol missing localization
-    
+
     CardType.Skill, CardRarity.Token,
     TargetType.Self)
 {
@@ -40,7 +40,7 @@ public class ThrowC() : MoyaCard(cost: 0,
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-    { 
+    {
         await PowerCmd.Apply<CoinsPower>(choiceContext,base.Owner.Creature, base.DynamicVars["CoinsPower"].BaseValue, base.Owner.Creature, this);
         await PowerCmd.Apply<Bulet>(choiceContext, base.Owner.Creature, base.DynamicVars["CoinsPower"].BaseValue+1, base.Owner.Creature, this);
         await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);

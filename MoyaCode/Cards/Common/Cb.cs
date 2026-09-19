@@ -27,7 +27,7 @@ public class Cb() : MoyaCard(cost: 1,
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [
         HoverTipFactory.FromPower<CoinsPower>()
     ];
-    
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         Creature user = base.Owner.Creature;

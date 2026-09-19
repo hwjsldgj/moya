@@ -29,12 +29,12 @@ public class BlueR() : MoyaCard(cost: 1,
     CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => 
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Retain
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(3, ValueProp.Move)];
-    
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 
     {
@@ -43,7 +43,7 @@ public class BlueR() : MoyaCard(cost: 1,
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
     }
 
-    
+
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(1m);

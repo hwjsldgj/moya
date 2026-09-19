@@ -35,7 +35,7 @@ public class BlueShooter() : MoyaCard(cost: 1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
 
-        
+
         var owner = this.Owner;
         if (owner == null) return;
 
@@ -48,7 +48,7 @@ public class BlueShooter() : MoyaCard(cost: 1,
         await PowerCmd.Apply<VulnerablePower>(choiceContext,randomTarget, base.DynamicVars["VulnerablePower"].BaseValue, base.Owner.Creature, this);
 
     }
-    
+
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(2m);
