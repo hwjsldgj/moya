@@ -30,8 +30,8 @@ public sealed class Bulet() : MoyaPowers
 
     public override bool AllowNegative => true;
 
-   
-    
+
+
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
         if (base.Owner != dealer)

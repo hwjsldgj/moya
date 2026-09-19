@@ -57,7 +57,7 @@ public sealed class CoinsPower() : MoyaPowers
             safety--;
         } while (randomTarget == target && safety > 0);
 
-        
+
         if (randomTarget != null && randomTarget != target && !randomTarget.IsDead)
         {
             await CreatureCmd.Damage(
@@ -80,4 +80,3 @@ public sealed class CoinsPower() : MoyaPowers
 
 }
 
-        

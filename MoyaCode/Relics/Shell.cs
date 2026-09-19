@@ -30,7 +30,7 @@ public class Shell: MoyaRelics
             await CreatureCmd.LoseMaxHp(choiceContext, target, (decimal)result.Props / 2, false);
         }
         return base.AfterDamageReceived(choiceContext, target, result, props, dealer, cardSource);
-       
+
     }
     public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature target, bool wasRemovalPrevented, float deathAnimLength)
     {

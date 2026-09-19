@@ -16,7 +16,7 @@ public abstract class MoyaPowers : CustomPowerModel
 {
     private bool PreviewDegenerate;
 
-    public override string CustomPackedIconPath 
+    public override string CustomPackedIconPath
     {
         get
         {
@@ -27,7 +27,7 @@ public abstract class MoyaPowers : CustomPowerModel
         }
     }
 
-    public override string CustomBigIconPath 
+    public override string CustomBigIconPath
     {
         get
         {

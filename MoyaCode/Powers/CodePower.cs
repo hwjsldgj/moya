@@ -66,8 +66,8 @@ public sealed class CodePower() : MoyaPowers
         {
             return;
         }
-        
-        
+
+
             await Cmd.CustomScaledWait(0.2f, 0.4f);
             foreach (Creature hittableEnemy in base.CombatState.HittableEnemies)
             {
@@ -77,9 +77,9 @@ public sealed class CodePower() : MoyaPowers
             await Cmd.CustomScaledWait(0.2f, 0.4f);
             await CreatureCmd.Damage(choiceContext, base.CombatState.HittableEnemies, base.Amount * a, ValueProp.Unpowered, null);
             await PowerCmd.Remove(this);
-        
-        
-        
+
+
+
     }
-    
+
 }

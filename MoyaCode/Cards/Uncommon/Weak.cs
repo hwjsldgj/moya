@@ -35,7 +35,7 @@ public class Weakk() : MoyaCard(cost: 1,
         await PowerCmd.Apply<WeakPower>(choiceContext,cardPlay.Target, amount, base.Owner.Creature, this);
         await PowerCmd.Apply<VulnerablePower>(choiceContext,cardPlay.Target, amount, base.Owner.Creature, this);
     }
-    
+
     protected override void OnUpgrade()
     {
         base.DynamicVars["Power"].UpgradeValueBy(2m);

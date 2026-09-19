@@ -38,7 +38,7 @@ public sealed class WeaponPower() : MoyaPowers
 
     public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
     {
-        
+
         if (player != base.Owner.Player)
         {
             return;
