@@ -7,13 +7,13 @@ namespace MoeNegiMod.Moya;
 
 /**
  * Ideas
- * 
+ *
  * Self Bind
- * 
+ *
  * Bind effect - square texture based on model size, lines random generated (amount equal to bind amount)
  * shader of transparency of line based on average of point spread of the model
  * colored
- * 
+ *
  * Bind... rename? Necrobinder kinda overlaps.
  * */
 

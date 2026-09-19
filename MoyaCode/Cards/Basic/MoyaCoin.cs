@@ -37,7 +37,7 @@ public class MoyaCoin() : MoyaCard(cost: 1,
     {
         await CommonActions.CardBlock(this, cardPlay);
         await PowerCmd.Apply<CoinsPower>(choiceContext, base.Owner.Creature, base.DynamicVars["CoinsPower"].BaseValue, base.Owner.Creature, this);
-        
+
     }
 
     protected override void OnUpgrade()

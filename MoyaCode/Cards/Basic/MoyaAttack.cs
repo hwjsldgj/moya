@@ -33,7 +33,7 @@ public class MoyaAttack() : MoyaCard(cost: 1,
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .Execute(choiceContext);
     }
-    
+
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(3m);
